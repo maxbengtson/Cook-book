@@ -1,4 +1,4 @@
-package com.example.mycalendar;
+package com.example.sqlite;
 
 import org.junit.Test;
 

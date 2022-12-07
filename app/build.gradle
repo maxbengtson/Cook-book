@@ -3,17 +3,18 @@ plugins {
 }
 
 android {
-    namespace 'com.example.mycalendar'
+    namespace 'com.example.sqlite'
     compileSdk 32
 
     defaultConfig {
-        applicationId "com.example.mycalendar"
+        applicationId "com.example.sqlite"
         minSdk 21
         targetSdk 32
         versionCode 1
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        vectorDrawables.useSupportLibrary = true
     }
 
     buildTypes {
