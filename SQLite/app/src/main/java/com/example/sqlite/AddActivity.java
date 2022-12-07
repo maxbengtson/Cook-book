@@ -7,8 +7,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
-import com.example.mycalendar.R;
-
 public class AddActivity extends AppCompatActivity {
 
     EditText title, author_input, pages_input;
