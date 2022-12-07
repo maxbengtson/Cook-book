@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="add">Lägg till</string>
-    <string name="book_title">Titel</string>
-    <string name="book_author">Författare</string>
-    <string name="number_of_pages">Antal sidor</string>
-    <string name="add_book">Lägg till bok</string>
-    <string name="book_library">Bibliotek</string>
+    <string name="book_title">Recept</string>
+    <string name="book_author">Ingrediens</string>
+    <string name="number_of_pages">Mått</string>
+    <string name="add_item">Nytt recept</string>
+    <string name="book_library">Kokbok</string>
     <string name="delete">Radera</string>
     <string name="update">Uppdatera</string>
 </resources>

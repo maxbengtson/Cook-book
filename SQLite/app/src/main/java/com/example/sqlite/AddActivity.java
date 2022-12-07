@@ -3,7 +3,6 @@ package com.example.sqlite;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
@@ -16,9 +15,9 @@ public class AddActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add);
-        title = findViewById(R.id.title_input);
-        author_input = findViewById(R.id.author_input);
-        pages_input = findViewById(R.id.pages_input);
+        title = findViewById(R.id.recipe);
+        author_input = findViewById(R.id.ingredient);
+        pages_input = findViewById(R.id.measurement);
         add_button = findViewById(R.id.add_button);
 
         add_button.setOnClickListener(view -> {

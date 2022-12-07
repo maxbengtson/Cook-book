@@ -9,7 +9,7 @@
     tools:context=".AddActivity">
 
     <EditText
-        android:id="@+id/title_input"
+        android:id="@+id/recipe"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="150dp"
@@ -18,7 +18,7 @@
         android:hint="@string/book_title" />
 
     <EditText
-        android:id="@+id/author_input"
+        android:id="@+id/ingredient"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
@@ -26,7 +26,7 @@
         android:hint="@string/book_author" />
 
     <EditText
-        android:id="@+id/pages_input"
+        android:id="@+id/measurement"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
