@@ -33,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
     MyDatabaseHelper myDB;
     Adapter adapter;
 
-    ArrayList<String> book_id, book_title, book_author, book_pages;
+    ArrayList<String> item_id, item_title, item_ingredients, item_measurement;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,15 +51,15 @@ public class MainActivity extends AppCompatActivity {
         });
 
         myDB = new MyDatabaseHelper(MainActivity.this);
-        book_id = new ArrayList<>();
-        book_title = new ArrayList<>();
-        book_author = new ArrayList<>();
-        book_pages = new ArrayList<>();
+        item_id = new ArrayList<>();
+        item_title = new ArrayList<>();
+        item_ingredients = new ArrayList<>();
+        item_measurement = new ArrayList<>();
 
         storeDataInArrays();
 
         //Initializes the adapter with all the data we have in store.
-        adapter = new Adapter(MainActivity.this, this, book_id, book_title, book_author, book_pages);
+        adapter = new Adapter(MainActivity.this, this, item_id, item_title, item_ingredients, item_measurement);
 
         //Sets the adapter.
         recyclerView.setAdapter(adapter);
@@ -85,10 +85,10 @@ public class MainActivity extends AppCompatActivity {
             no_data.setVisibility(View.VISIBLE);
         }else{
             while (cursor.moveToNext()){
-                book_id.add(cursor.getString(0));
-                book_title.add(cursor.getString(1));
-                book_author.add(cursor.getString(2));
-                book_pages.add(cursor.getString(3));
+                item_id.add(cursor.getString(0));
+                item_title.add(cursor.getString(1));
+                item_ingredients.add(cursor.getString(2));
+                item_measurement.add(cursor.getString(3));
             }
             empty_imageView.setVisibility(View.GONE);
             no_data.setVisibility(View.GONE);

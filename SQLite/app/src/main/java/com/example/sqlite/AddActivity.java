@@ -22,7 +22,7 @@ public class AddActivity extends AppCompatActivity {
 
         add_button.setOnClickListener(view -> {
             MyDatabaseHelper myDb = new MyDatabaseHelper(AddActivity.this);
-            myDb.addBook(title.getText().toString().trim(),
+            myDb.addIem(title.getText().toString().trim(),
                     ingredient.getText().toString().trim(),
                     Integer.parseInt(measurement.getText().toString().trim()));
         });

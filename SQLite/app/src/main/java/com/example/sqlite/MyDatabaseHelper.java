@@ -12,14 +12,14 @@ import androidx.annotation.Nullable;
 class MyDatabaseHelper extends SQLiteOpenHelper {
 
     private Context context;
-    private static final String DATABASE_NAME = "BookLibrary.db";
+    private static final String DATABASE_NAME = "Recipes.db";
     private static final int DATABASE_VERSION = 1;
 
-    private static final String TABLE_NAME = "my_library";
+    private static final String TABLE_NAME = "my_recipes";
     private static final String COLUMN_ID = "_id";
-    private static final String COLUMN_TITLE = "book_title";
-    private static final String COLUMN_AUTHOR = "book_author";
-    private static final String COLUMN_PAGES = "book_pages";
+    private static final String COLUMN_TITLE = "item_title";
+    private static final String COLUMN_INGREDIENTS = "item_ingredients";
+    private static final String COLUMN_MEASUREMENT = "item_measurement";
 
 
     MyDatabaseHelper(@Nullable Context context) {
@@ -33,8 +33,8 @@ class MyDatabaseHelper extends SQLiteOpenHelper {
         String query = "CREATE TABLE " + TABLE_NAME +
                         " (" + COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
                         COLUMN_TITLE + " TEXT, " +
-                        COLUMN_AUTHOR + " TEXT, " +
-                        COLUMN_PAGES + " INTEGER);";
+                        COLUMN_INGREDIENTS + " TEXT, " +
+                        COLUMN_MEASUREMENT + " INTEGER);";
         db.execSQL(query);
 
     }
@@ -44,13 +44,13 @@ class MyDatabaseHelper extends SQLiteOpenHelper {
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME);
         onCreate(db);
     }
-    void addBook(String title, String author, int pages){
+    void addIem(String title, String ingredients, int measurement){
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues cv = new ContentValues();
 
         cv.put(COLUMN_TITLE, title);
-        cv.put(COLUMN_AUTHOR, author);
-        cv.put(COLUMN_PAGES, pages);
+        cv.put(COLUMN_INGREDIENTS, ingredients);
+        cv.put(COLUMN_MEASUREMENT, measurement);
         long result = db.insert(TABLE_NAME, null, cv);
         
         //If the application fails to insert the data the result will be -1.
@@ -70,12 +70,12 @@ class MyDatabaseHelper extends SQLiteOpenHelper {
          }
          return cursor;
     }
-    void updateData(String row_id, String title, String author, String pages){
+    void updateData(String row_id, String title, String ingredients, String measurement){
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues cv = new ContentValues();
         cv.put(COLUMN_TITLE, title);
-        cv.put(COLUMN_AUTHOR, author);
-        cv.put(COLUMN_PAGES, pages);
+        cv.put(COLUMN_INGREDIENTS, ingredients);
+        cv.put(COLUMN_MEASUREMENT, measurement);
 
         long result = db.update(TABLE_NAME, cv, "_id=?", new String[]{row_id});
         if (result == -1){

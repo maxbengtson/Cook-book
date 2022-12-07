@@ -9,4 +9,5 @@
     <string name="delete">Radera</string>
     <string name="update">Uppdatera</string>
     <string name="app_name">Kokboken</string>
+    <string name="update_recipe">Redigera recept</string>
 </resources>
