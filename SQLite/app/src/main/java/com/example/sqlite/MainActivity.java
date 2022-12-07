@@ -17,7 +17,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
@@ -32,7 +31,7 @@ public class MainActivity extends AppCompatActivity {
     TextView no_data;
 
     MyDatabaseHelper myDB;
-    BookAdapter bookAdapter;
+    Adapter adapter;
 
     ArrayList<String> book_id, book_title, book_author, book_pages;
 
@@ -60,10 +59,10 @@ public class MainActivity extends AppCompatActivity {
         storeDataInArrays();
 
         //Initializes the adapter with all the data we have in store.
-        bookAdapter = new BookAdapter(MainActivity.this, this, book_id, book_title, book_author, book_pages);
+        adapter = new Adapter(MainActivity.this, this, book_id, book_title, book_author, book_pages);
 
         //Sets the adapter.
-        recyclerView.setAdapter(bookAdapter);
+        recyclerView.setAdapter(adapter);
 
         recyclerView.setLayoutManager(new LinearLayoutManager(MainActivity.this));
     }
