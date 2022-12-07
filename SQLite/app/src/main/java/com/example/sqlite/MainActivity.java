@@ -135,4 +135,7 @@ public class MainActivity extends AppCompatActivity {
         });
         builder.create().show();
     }
+    public void masterchef(){
+        String hejDetÄrJag;
+    }
 }
