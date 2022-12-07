@@ -18,20 +18,28 @@
         android:hint="@string/title" />
 
     <EditText
-        android:id="@+id/ingredient_add"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:hint="@string/ingredient" />
-
-    <EditText
         android:id="@+id/measurement_add"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
         android:hint="@string/measurement"
         android:inputType="number" />
+
+    <EditText
+        android:id="@+id/ingredient_add"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="@string/ingredient"
+        android:inputType="textMultiLine"
+        android:lines="5"
+        android:minLines="1"
+        android:overScrollMode="always"
+        android:scrollbarStyle="insideInset"
+        android:scrollbars="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/title_input" />
 
     <Button
         android:id="@+id/add_button"
