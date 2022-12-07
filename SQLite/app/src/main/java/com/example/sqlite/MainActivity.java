@@ -138,4 +138,6 @@ public class MainActivity extends AppCompatActivity {
     public void masterchef(){
         String hejDetÄrJag;
     }
+    public void cockmaster() { String tja;}
+    
 }
