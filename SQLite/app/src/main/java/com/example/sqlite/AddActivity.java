@@ -8,23 +8,23 @@ import android.widget.EditText;
 
 public class AddActivity extends AppCompatActivity {
 
-    EditText title, author_input, pages_input;
+    EditText title, ingredient, measurement;
     Button add_button;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add);
-        title = findViewById(R.id.recipe);
-        author_input = findViewById(R.id.ingredient);
-        pages_input = findViewById(R.id.measurement);
+        title = findViewById(R.id.recipe_add);
+        ingredient = findViewById(R.id.ingredient_add);
+        measurement = findViewById(R.id.measurement_add);
         add_button = findViewById(R.id.add_button);
 
         add_button.setOnClickListener(view -> {
             MyDatabaseHelper myDb = new MyDatabaseHelper(AddActivity.this);
             myDb.addBook(title.getText().toString().trim(),
-                    author_input.getText().toString().trim(),
-                    Integer.parseInt(pages_input.getText().toString().trim()));
+                    ingredient.getText().toString().trim(),
+                    Integer.parseInt(measurement.getText().toString().trim()));
         });
     }
 }

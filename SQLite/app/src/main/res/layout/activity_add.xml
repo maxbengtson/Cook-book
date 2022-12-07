@@ -9,28 +9,28 @@
     tools:context=".AddActivity">
 
     <EditText
-        android:id="@+id/recipe"
+        android:id="@+id/recipe_add"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="150dp"
         android:ems="10"
         android:inputType="textPersonName"
-        android:hint="@string/book_title" />
+        android:hint="@string/title" />
 
     <EditText
-        android:id="@+id/ingredient"
+        android:id="@+id/ingredient_add"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
         android:inputType="textPersonName"
-        android:hint="@string/book_author" />
+        android:hint="@string/ingredient" />
 
     <EditText
-        android:id="@+id/measurement"
+        android:id="@+id/measurement_add"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:hint="@string/number_of_pages"
+        android:hint="@string/measurement"
         android:inputType="number" />
 
     <Button

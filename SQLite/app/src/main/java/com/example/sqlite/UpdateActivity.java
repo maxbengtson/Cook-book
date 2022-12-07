@@ -12,19 +12,19 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class UpdateActivity extends AppCompatActivity {
-    EditText title_input, author_input, pages_input;
+    EditText title_update, ingredient_update, measurement_update;
     Button update_button, delete_button;
 
-    String id, title, author, pages;
+    String id, title, ingredient, measurement;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_update);
 
-        title_input = findViewById(R.id.title_input_update);
-        author_input = findViewById(R.id.author_input_update);
-        pages_input = findViewById(R.id.pages_input_update);
+        title_update = findViewById(R.id.recipe_update);
+        ingredient_update = findViewById(R.id.ingredient_update);
+        measurement_update = findViewById(R.id.measurement_update);
         update_button = findViewById(R.id.update_button);
         delete_button = findViewById(R.id.delete_button);
 
@@ -38,10 +38,10 @@ public class UpdateActivity extends AppCompatActivity {
 
         update_button.setOnClickListener(view -> {
             MyDatabaseHelper myDB = new MyDatabaseHelper(UpdateActivity.this);
-            title=title_input.getText().toString().trim();
-            author=author_input.getText().toString().trim();
-            pages=pages_input.getText().toString().trim();
-            myDB.updateData(id, title, author, pages);
+            title= title_update.getText().toString().trim();
+            ingredient = ingredient_update.getText().toString().trim();
+            measurement = measurement_update.getText().toString().trim();
+            myDB.updateData(id, title, ingredient, measurement);
         });
         delete_button.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -56,13 +56,13 @@ public class UpdateActivity extends AppCompatActivity {
             //If there is data transferred to our new activity, get the data from the intent.
             id = getIntent().getStringExtra("id");
             title = getIntent().getStringExtra("title");
-            author = getIntent().getStringExtra("author");
-            pages = getIntent().getStringExtra("pages");
+            ingredient = getIntent().getStringExtra("author");
+            measurement = getIntent().getStringExtra("pages");
 
             //Set the intent data to the text boxes in activity_update.xml.
-            title_input.setText(title);
-            author_input.setText(author);
-            pages_input.setText(pages);
+            title_update.setText(title);
+            ingredient_update.setText(ingredient);
+            measurement_update.setText(measurement);
         }else{
             Toast.makeText(UpdateActivity.this, "No data.", Toast.LENGTH_SHORT).show();
         }

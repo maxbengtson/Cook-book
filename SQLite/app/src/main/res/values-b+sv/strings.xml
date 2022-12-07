@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="add">Lägg till</string>
-    <string name="book_title">Recept</string>
-    <string name="book_author">Ingrediens</string>
-    <string name="number_of_pages">Mått</string>
+    <string name="title">Recept</string>
+    <string name="ingredient">Ingrediens</string>
+    <string name="measurement">Mått</string>
     <string name="add_item">Nytt recept</string>
-    <string name="book_library">Kokbok</string>
+    <string name="cookbook">Kokbok</string>
     <string name="delete">Radera</string>
     <string name="update">Uppdatera</string>
+    <string name="app_name">Kokboken</string>
 </resources>

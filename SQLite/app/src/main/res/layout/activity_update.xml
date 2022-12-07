@@ -9,28 +9,28 @@
     tools:context=".UpdateActivity">
 
     <EditText
-        android:id="@+id/title_input_update"
+        android:id="@+id/recipe_update"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="150dp"
         android:ems="10"
         android:inputType="textPersonName"
-        android:hint="Book Title" />
+        android:hint="@string/title" />
 
     <EditText
-        android:id="@+id/author_input_update"
+        android:id="@+id/ingredient_update"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
         android:inputType="textPersonName"
-        android:hint="Book Author" />
+        android:hint="@string/ingredient" />
 
     <EditText
-        android:id="@+id/pages_input_update"
+        android:id="@+id/measurement_update"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:hint="Number of pages"
+        android:hint="@string/measurement"
         android:inputType="number" />
 
     <Button
