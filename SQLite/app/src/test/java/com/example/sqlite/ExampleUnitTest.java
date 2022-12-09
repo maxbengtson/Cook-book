@@ -1,4 +1,4 @@
-package com.example.cookbook;
+package com.example.sqlite;
 
 import org.junit.Test;
 

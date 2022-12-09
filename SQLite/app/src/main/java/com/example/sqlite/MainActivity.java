@@ -1,4 +1,4 @@
-package com.example.cookbook;
+package com.example.sqlite;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;

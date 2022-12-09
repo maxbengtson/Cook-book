@@ -1,4 +1,4 @@
-package com.example.cookbook;
+package com.example.sqlite;
 
 import android.app.Activity;
 import android.content.Context;

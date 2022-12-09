@@ -1,4 +1,4 @@
-package com.example.cookbook;
+package com.example.sqlite;
 
 import androidx.appcompat.app.AppCompatActivity;
 
