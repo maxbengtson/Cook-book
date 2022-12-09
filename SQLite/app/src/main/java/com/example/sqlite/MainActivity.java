@@ -33,6 +33,7 @@ public class MainActivity extends AppCompatActivity {
     TextView no_data;
 
     MyDatabaseHelper myDB;
+    Repository repository;
     Adapter adapter;
 
     ArrayList<String> item_id, item_title, item_ingredients, item_measurement;
@@ -53,6 +54,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
         myDB = new MyDatabaseHelper(MainActivity.this);
+        repository = new MyDatabaseHelper(getApplicationContext());
         item_id = new ArrayList<>();
         item_title = new ArrayList<>();
         item_ingredients = new ArrayList<>();
@@ -79,7 +81,7 @@ public class MainActivity extends AppCompatActivity {
 
     void storeDataInArrays(){
         //Store the result from the readAllData method into the cursor object.
-        Cursor cursor = myDB.readAllData();
+        Cursor cursor = repository.readAllData();
 
         //If the cursor is empty, there is no data in the database.
         if (cursor.getCount() == 0){

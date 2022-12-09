@@ -9,7 +9,7 @@ import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 
-class MyDatabaseHelper extends SQLiteOpenHelper {
+class MyDatabaseHelper extends SQLiteOpenHelper implements Repository {
 
     private Context context;
     private static final String DATABASE_NAME = "Recipes.db";
@@ -44,7 +44,7 @@ class MyDatabaseHelper extends SQLiteOpenHelper {
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME);
         onCreate(db);
     }
-    void addIem(String title, String ingredients, int measurement){
+    public void addIem(String title, String ingredients, int measurement){
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues cv = new ContentValues();
 
@@ -61,7 +61,7 @@ class MyDatabaseHelper extends SQLiteOpenHelper {
 
         }
     }
-    Cursor readAllData(){
+    public Cursor readAllData(){
          String query = "SELECT * FROM " + TABLE_NAME;
          SQLiteDatabase db = this.getReadableDatabase();
 
@@ -71,7 +71,7 @@ class MyDatabaseHelper extends SQLiteOpenHelper {
          }
          return cursor;
     }
-    void updateData(String row_id, String title, String ingredients, String measurement){
+    public void updateData(String row_id, String title, String ingredients, String measurement){
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues cv = new ContentValues();
         cv.put(COLUMN_TITLE, title);
@@ -85,7 +85,7 @@ class MyDatabaseHelper extends SQLiteOpenHelper {
             Toast.makeText(context, "Updated successfully!", Toast.LENGTH_SHORT).show();
         }
     }
-    void deleteOneRow(String row_id){
+    public void deleteOneRow(String row_id){
         SQLiteDatabase db = this.getWritableDatabase();
         long result = db.delete(TABLE_NAME, "_id=?", new String[]{row_id});
         if (result == -1){
@@ -95,7 +95,7 @@ class MyDatabaseHelper extends SQLiteOpenHelper {
         }
     }
 
-    void deleteAllData(){
+    public void deleteAllData(){
         SQLiteDatabase db = this.getWritableDatabase();
         db.execSQL("DELETE FROM " + TABLE_NAME);
     }
