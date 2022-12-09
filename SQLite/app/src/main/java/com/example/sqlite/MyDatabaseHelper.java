@@ -53,7 +53,7 @@ class MyDatabaseHelper extends SQLiteOpenHelper implements Repository {
         cv.put(COLUMN_MEASUREMENT, measurement);
         long result = db.insert(TABLE_NAME, null, cv);
         
-        //If the application fails to insert the data the result will be -1.
+        //Om applikationen inte kan föra in uppgifterna är resultatet -1
         if (result == -1){
             Toast.makeText(context, "Failed to add.", Toast.LENGTH_SHORT).show();
         }else{

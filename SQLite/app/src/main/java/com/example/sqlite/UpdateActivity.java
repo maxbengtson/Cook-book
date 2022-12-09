@@ -32,7 +32,7 @@ public class UpdateActivity extends AppCompatActivity {
 
         getAndSetIntentData();
 
-        //Set actionbar title after getAndSetIntentData method
+
         ActionBar ab = getSupportActionBar();
         if (ab != null){
             ab.setTitle(title);
@@ -54,14 +54,14 @@ public class UpdateActivity extends AppCompatActivity {
     }
 
     void getAndSetIntentData(){
-        if (getIntent().hasExtra("id") && getIntent().hasExtra("title") && getIntent().hasExtra("author") && getIntent().hasExtra("pages")){
-            //If there is data transferred to our new activity, get the data from the intent.
+        if (getIntent().hasExtra("id") && getIntent().hasExtra("title") && getIntent().hasExtra("chef") && getIntent().hasExtra("ingredients")){
+            //Om det finns information att visa, hämtar vi den från intent
             id = getIntent().getStringExtra("id");
             title = getIntent().getStringExtra("title");
-            ingredient = getIntent().getStringExtra("author");
-            measurement = getIntent().getStringExtra("pages");
+            ingredient = getIntent().getStringExtra("chef");
+            measurement = getIntent().getStringExtra("ingredients");
 
-            //Set the intent data to the text boxes in activity_update.xml.
+            //Visar data som går att uppdatera.
             title_update.setText(title);
             ingredient_update.setText(ingredient);
             measurement_update.setText(measurement);
@@ -69,7 +69,7 @@ public class UpdateActivity extends AppCompatActivity {
             Toast.makeText(UpdateActivity.this, "No data.", Toast.LENGTH_SHORT).show();
         }
     }
-
+    //Ta bort ett recept med en säkerhetsvarning
     void confirmDialog(){
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle("Delete " + title + "?");
