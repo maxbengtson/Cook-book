@@ -58,6 +58,7 @@ class MyDatabaseHelper extends SQLiteOpenHelper {
             Toast.makeText(context, "Failed to add.", Toast.LENGTH_SHORT).show();
         }else{
             Toast.makeText(context, "Added successfully!", Toast.LENGTH_SHORT).show();
+
         }
     }
     Cursor readAllData(){

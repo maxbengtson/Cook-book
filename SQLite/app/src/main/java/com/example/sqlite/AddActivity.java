@@ -27,6 +27,9 @@ public class AddActivity extends AppCompatActivity {
             myDb.addIem(title.getText().toString().trim(),
                     ingredient.getText().toString().trim(),
                     Integer.parseInt(measurement.getText().toString().trim()));
+            title.setText("");
+            ingredient.setText("");
+            measurement.setText("");
         });
     }
 }
