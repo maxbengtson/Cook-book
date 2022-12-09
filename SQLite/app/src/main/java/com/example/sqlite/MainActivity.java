@@ -17,7 +17,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
-import com.example.sqlite.R;
 
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -26,13 +25,13 @@ import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
-    //Declares the views and the MyDatabaseHelper class.
+    //Declarera View och vår DataBaseHelper klassen
     RecyclerView recyclerView;
     FloatingActionButton add_button;
     ImageView empty_imageView;
     TextView no_data;
 
-    MyDatabaseHelper myDB;
+    Repository repository;
     Adapter adapter;
 
     ArrayList<String> item_id, item_title, item_ingredients, item_measurement;
@@ -52,7 +51,7 @@ public class MainActivity extends AppCompatActivity {
             startActivity(intent);
         });
 
-        myDB = new MyDatabaseHelper(MainActivity.this);
+        repository = new RepositoryImplementation(getApplicationContext());
         item_id = new ArrayList<>();
         item_title = new ArrayList<>();
         item_ingredients = new ArrayList<>();
@@ -60,7 +59,7 @@ public class MainActivity extends AppCompatActivity {
 
         storeDataInArrays();
 
-        //Initializes the adapter with all the data we have in store.
+        //Initialiserar adaptern med all data som är sparad.
         adapter = new Adapter(MainActivity.this, this, item_id, item_title, item_ingredients, item_measurement);
 
         //Sets the adapter.
@@ -78,10 +77,10 @@ public class MainActivity extends AppCompatActivity {
     }
 
     void storeDataInArrays(){
-        //Store the result from the readAllData method into the cursor object.
-        Cursor cursor = myDB.readAllData();
+        //Lagrar innehållet från readAllData metoden i vår cursor objekt.
+        Cursor cursor = repository.readAllData();
 
-        //If the cursor is empty, there is no data in the database.
+        //Om innehållet är tomt, visa "No ingredients" text
         if (cursor.getCount() == 0){
             empty_imageView.setVisibility(View.VISIBLE);
             no_data.setVisibility(View.VISIBLE);
@@ -111,23 +110,24 @@ public class MainActivity extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
-
+    // Valet att ta bort allt.
     void confirmDialog(){
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle("Delete all?");
-        builder.setMessage("Are you sure you want to delete all data?");
-        builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+        builder.setTitle(R.string.delete_all);
+        builder.setMessage(R.string.delete_message);
+        builder.setPositiveButton(R.string.yes, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                MyDatabaseHelper myDB = new MyDatabaseHelper(MainActivity.this);
-                myDB.deleteAllData();
+                Repository repository = new RepositoryImplementation(MainActivity.this);
+                repository.deleteAllData();
 
-                //Refresh activity.
+                //Refreshar activityn
                 Intent intent = new Intent(MainActivity.this, MainActivity.class);
                 startActivity(intent);
                 finish();
             }
         });
+        // Möjlighet att ångra sig
         builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {

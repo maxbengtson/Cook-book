@@ -9,7 +9,7 @@ import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 
-class MyDatabaseHelper extends SQLiteOpenHelper {
+class RepositoryImplementation extends SQLiteOpenHelper implements Repository {
 
     private Context context;
     private static final String DATABASE_NAME = "Recipes.db";
@@ -22,7 +22,7 @@ class MyDatabaseHelper extends SQLiteOpenHelper {
     private static final String COLUMN_MEASUREMENT = "item_measurement";
 
 
-    MyDatabaseHelper(@Nullable Context context) {
+    RepositoryImplementation(@Nullable Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
         this.context = context;
     }
@@ -44,7 +44,7 @@ class MyDatabaseHelper extends SQLiteOpenHelper {
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME);
         onCreate(db);
     }
-    void addIem(String title, String ingredients, int measurement){
+    public void addIem(String title, String ingredients, int measurement){
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues cv = new ContentValues();
 
@@ -53,15 +53,15 @@ class MyDatabaseHelper extends SQLiteOpenHelper {
         cv.put(COLUMN_MEASUREMENT, measurement);
         long result = db.insert(TABLE_NAME, null, cv);
         
-        //If the application fails to insert the data the result will be -1.
+        //Om applikationen inte kan föra in uppgifterna är resultatet -1
         if (result == -1){
-            Toast.makeText(context, "Failed to add.", Toast.LENGTH_SHORT).show();
+            Toast.makeText(context, R.string.failed_to_add, Toast.LENGTH_SHORT).show();
         }else{
-            Toast.makeText(context, "Added successfully!", Toast.LENGTH_SHORT).show();
+            Toast.makeText(context, R.string.addes_successfully, Toast.LENGTH_SHORT).show();
 
         }
     }
-    Cursor readAllData(){
+    public Cursor readAllData(){
          String query = "SELECT * FROM " + TABLE_NAME;
          SQLiteDatabase db = this.getReadableDatabase();
 
@@ -71,7 +71,7 @@ class MyDatabaseHelper extends SQLiteOpenHelper {
          }
          return cursor;
     }
-    void updateData(String row_id, String title, String ingredients, String measurement){
+    public void updateData(String row_id, String title, String ingredients, String measurement){
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues cv = new ContentValues();
         cv.put(COLUMN_TITLE, title);
@@ -80,22 +80,22 @@ class MyDatabaseHelper extends SQLiteOpenHelper {
 
         long result = db.update(TABLE_NAME, cv, "_id=?", new String[]{row_id});
         if (result == -1){
-            Toast.makeText(context, "Failed to update.", Toast.LENGTH_SHORT).show();
+            Toast.makeText(context, R.string.failed_to_update, Toast.LENGTH_SHORT).show();
         }else{
-            Toast.makeText(context, "Updated successfully!", Toast.LENGTH_SHORT).show();
+            Toast.makeText(context, R.string.updated_successfully, Toast.LENGTH_SHORT).show();
         }
     }
-    void deleteOneRow(String row_id){
+    public void deleteOneRow(String row_id){
         SQLiteDatabase db = this.getWritableDatabase();
         long result = db.delete(TABLE_NAME, "_id=?", new String[]{row_id});
         if (result == -1){
-            Toast.makeText(context, "Failed to delete.", Toast.LENGTH_SHORT).show();
+            Toast.makeText(context, R.string.failed_to_delete, Toast.LENGTH_SHORT).show();
         }else{
-            Toast.makeText(context, "Deleted successfully!", Toast.LENGTH_SHORT).show();
+            Toast.makeText(context, R.string.deleted_successfully, Toast.LENGTH_SHORT).show();
         }
     }
 
-    void deleteAllData(){
+    public void deleteAllData(){
         SQLiteDatabase db = this.getWritableDatabase();
         db.execSQL("DELETE FROM " + TABLE_NAME);
     }

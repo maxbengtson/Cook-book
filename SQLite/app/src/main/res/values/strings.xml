@@ -10,4 +10,16 @@
     <string name="update">Update</string>
     <string name="update_recipe">Edit Recipe</string>
     <string name="no_data">No recipes</string>
+    <string name="delete_all">Delete all?</string>
+    <string name="delete_message">Are you sure you want to delete all recipes?</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+    <string name="delete_item">"Delete "</string>
+    <string name="delete_item_message">"Are you sure you want to delete "</string>
+    <string name="addes_successfully">Added successfully!</string>
+    <string name="failed_to_add">Failed to add.</string>
+    <string name="failed_to_update">Failed to update.</string>
+    <string name="updated_successfully">Updated successfully!</string>
+    <string name="failed_to_delete">Failed to delete.</string>
+    <string name="deleted_successfully">Deleted successfully!</string>
 </resources>

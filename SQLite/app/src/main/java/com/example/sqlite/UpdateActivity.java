@@ -6,7 +6,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
-import com.example.sqlite.R;
 
 
 import androidx.appcompat.app.ActionBar;
@@ -32,18 +31,18 @@ public class UpdateActivity extends AppCompatActivity {
 
         getAndSetIntentData();
 
-        //Set actionbar title after getAndSetIntentData method
+
         ActionBar ab = getSupportActionBar();
         if (ab != null){
             ab.setTitle(title);
         }
 
         update_button.setOnClickListener(view -> {
-            MyDatabaseHelper myDB = new MyDatabaseHelper(UpdateActivity.this);
+            Repository repository = new RepositoryImplementation(UpdateActivity.this);
             title= title_update.getText().toString().trim();
             ingredient = ingredient_update.getText().toString().trim();
             measurement = measurement_update.getText().toString().trim();
-            myDB.updateData(id, title, ingredient, measurement);
+            repository.updateData(id, title, ingredient, measurement);
         });
         delete_button.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -54,35 +53,35 @@ public class UpdateActivity extends AppCompatActivity {
     }
 
     void getAndSetIntentData(){
-        if (getIntent().hasExtra("id") && getIntent().hasExtra("title") && getIntent().hasExtra("author") && getIntent().hasExtra("pages")){
-            //If there is data transferred to our new activity, get the data from the intent.
+        if (getIntent().hasExtra("id") && getIntent().hasExtra("title") && getIntent().hasExtra("chef") && getIntent().hasExtra("ingredients")){
+            //Om det finns information att visa, hämtar vi den från intent
             id = getIntent().getStringExtra("id");
             title = getIntent().getStringExtra("title");
-            ingredient = getIntent().getStringExtra("author");
-            measurement = getIntent().getStringExtra("pages");
+            ingredient = getIntent().getStringExtra("chef");
+            measurement = getIntent().getStringExtra("ingredients");
 
-            //Set the intent data to the text boxes in activity_update.xml.
+            //Visar data som går att uppdatera.
             title_update.setText(title);
             ingredient_update.setText(ingredient);
             measurement_update.setText(measurement);
         }else{
-            Toast.makeText(UpdateActivity.this, "No data.", Toast.LENGTH_SHORT).show();
+            Toast.makeText(UpdateActivity.this, R.string.no_data, Toast.LENGTH_SHORT).show();
         }
     }
-
+    //Ta bort ett recept med en säkerhetsvarning
     void confirmDialog(){
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle("Delete " + title + "?");
-        builder.setMessage("Are you sure you want to delete " + title + "?");
-        builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+        builder.setTitle(getString(R.string.delete_item) + title + "?");
+        builder.setMessage(getString(R.string.delete_item_message) + title + "?");
+        builder.setPositiveButton(R.string.yes, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                MyDatabaseHelper myDB = new MyDatabaseHelper(UpdateActivity.this);
-                myDB.deleteOneRow(id);
+                Repository repository = new RepositoryImplementation(UpdateActivity.this);
+                repository.deleteOneRow(id);
                 finish();
             }
         });
-        builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+        builder.setNegativeButton(R.string.no, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
 

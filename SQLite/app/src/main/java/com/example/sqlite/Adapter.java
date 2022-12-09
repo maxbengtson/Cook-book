@@ -41,13 +41,13 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
     }
 
     @NonNull
-    @Override
+    @Override  // "Blåser upp" informationen vi vill visa i vår Viewholder
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(context);
         View view = inflater.inflate(R.layout.recipe_list_item, parent, false);
         return new ViewHolder(view);
     }
-
+        //Håller informationen vi vill använda/visa i vår recycler
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         holder.item_id.setText(String.valueOf(item_id.get(position)));
@@ -57,12 +57,12 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
         holder.mainLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //Here we are navigating from our MainActivity, where we have the recyclerView, to our UpdateActivity. We're transferring the properties of the book to the new activity...
+                //På klick, går från Mainactivity till UpdateActivity. sen för över de nya propertiesen.
                 Intent intent = new Intent(context, UpdateActivity.class);
                 intent.putExtra("id", String.valueOf(item_id.get(position)));
                 intent.putExtra("title", String.valueOf(item_title.get(position)));
-                intent.putExtra("author", String.valueOf(item_ingredients.get(position)));
-                intent.putExtra("pages", String.valueOf(item_measurement.get(position)));
+                intent.putExtra("ingredients", String.valueOf(item_ingredients.get(position)));
+                intent.putExtra("chef", String.valueOf(item_measurement.get(position)));
                 activity.startActivityForResult(intent, 1);
             }
         });
@@ -77,7 +77,7 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
 
         TextView item_id, item_title, item_ingredients, item_measurement;
         LinearLayout mainLayout;
-
+        // Det är här vi väljer vad vi vill visa i vår recycler view
         public ViewHolder(@NonNull View view) {
             super(view);
             item_id = view.findViewById(R.id.item_id);
