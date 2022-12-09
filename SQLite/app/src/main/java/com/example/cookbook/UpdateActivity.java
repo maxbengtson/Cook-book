@@ -1,4 +1,4 @@
-package com.example.sqlite;
+package com.example.cookbook;
 
 import android.content.DialogInterface;
 import android.os.Bundle;

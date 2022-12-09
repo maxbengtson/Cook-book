@@ -1,4 +1,4 @@
-package com.example.sqlite;
+package com.example.cookbook;
 
 public interface Repository{
 
