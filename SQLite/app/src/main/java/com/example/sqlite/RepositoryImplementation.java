@@ -9,7 +9,7 @@ import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 
-class MyDatabaseHelper extends SQLiteOpenHelper implements Repository {
+class RepositoryImplementation extends SQLiteOpenHelper implements Repository {
 
     private Context context;
     private static final String DATABASE_NAME = "Recipes.db";
@@ -22,7 +22,7 @@ class MyDatabaseHelper extends SQLiteOpenHelper implements Repository {
     private static final String COLUMN_MEASUREMENT = "item_measurement";
 
 
-    MyDatabaseHelper(@Nullable Context context) {
+    RepositoryImplementation(@Nullable Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
         this.context = context;
     }
@@ -55,9 +55,9 @@ class MyDatabaseHelper extends SQLiteOpenHelper implements Repository {
         
         //Om applikationen inte kan föra in uppgifterna är resultatet -1
         if (result == -1){
-            Toast.makeText(context, "Failed to add.", Toast.LENGTH_SHORT).show();
+            Toast.makeText(context, R.string.failed_to_add, Toast.LENGTH_SHORT).show();
         }else{
-            Toast.makeText(context, "Added successfully!", Toast.LENGTH_SHORT).show();
+            Toast.makeText(context, R.string.addes_successfully, Toast.LENGTH_SHORT).show();
 
         }
     }
@@ -80,18 +80,18 @@ class MyDatabaseHelper extends SQLiteOpenHelper implements Repository {
 
         long result = db.update(TABLE_NAME, cv, "_id=?", new String[]{row_id});
         if (result == -1){
-            Toast.makeText(context, "Failed to update.", Toast.LENGTH_SHORT).show();
+            Toast.makeText(context, R.string.failed_to_update, Toast.LENGTH_SHORT).show();
         }else{
-            Toast.makeText(context, "Updated successfully!", Toast.LENGTH_SHORT).show();
+            Toast.makeText(context, R.string.updated_successfully, Toast.LENGTH_SHORT).show();
         }
     }
     public void deleteOneRow(String row_id){
         SQLiteDatabase db = this.getWritableDatabase();
         long result = db.delete(TABLE_NAME, "_id=?", new String[]{row_id});
         if (result == -1){
-            Toast.makeText(context, "Failed to delete.", Toast.LENGTH_SHORT).show();
+            Toast.makeText(context, R.string.failed_to_delete, Toast.LENGTH_SHORT).show();
         }else{
-            Toast.makeText(context, "Deleted successfully!", Toast.LENGTH_SHORT).show();
+            Toast.makeText(context, R.string.deleted_successfully, Toast.LENGTH_SHORT).show();
         }
     }
 

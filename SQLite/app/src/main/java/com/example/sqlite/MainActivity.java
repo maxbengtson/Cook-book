@@ -17,7 +17,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
-import com.example.sqlite.R;
 
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -32,7 +31,6 @@ public class MainActivity extends AppCompatActivity {
     ImageView empty_imageView;
     TextView no_data;
 
-    MyDatabaseHelper myDB;
     Repository repository;
     Adapter adapter;
 
@@ -53,8 +51,7 @@ public class MainActivity extends AppCompatActivity {
             startActivity(intent);
         });
 
-        myDB = new MyDatabaseHelper(MainActivity.this);
-        repository = new MyDatabaseHelper(getApplicationContext());
+        repository = new RepositoryImplementation(getApplicationContext());
         item_id = new ArrayList<>();
         item_title = new ArrayList<>();
         item_ingredients = new ArrayList<>();
@@ -116,13 +113,13 @@ public class MainActivity extends AppCompatActivity {
     // Valet att ta bort allt.
     void confirmDialog(){
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle("Delete all?");
-        builder.setMessage("Are you sure you want to delete all data?");
-        builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+        builder.setTitle(R.string.delete_all);
+        builder.setMessage(R.string.delete_message);
+        builder.setPositiveButton(R.string.yes, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                MyDatabaseHelper myDB = new MyDatabaseHelper(MainActivity.this);
-                myDB.deleteAllData();
+                Repository repository = new RepositoryImplementation(MainActivity.this);
+                repository.deleteAllData();
 
                 //Refreshar activityn
                 Intent intent = new Intent(MainActivity.this, MainActivity.class);
