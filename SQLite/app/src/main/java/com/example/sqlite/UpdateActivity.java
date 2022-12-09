@@ -65,7 +65,7 @@ public class UpdateActivity extends AppCompatActivity {
             ingredient_update.setText(ingredient);
             measurement_update.setText(measurement);
         }else{
-            Toast.makeText(UpdateActivity.this, "No data.", Toast.LENGTH_SHORT).show();
+            Toast.makeText(UpdateActivity.this, R.string.no_data, Toast.LENGTH_SHORT).show();
         }
     }
 
