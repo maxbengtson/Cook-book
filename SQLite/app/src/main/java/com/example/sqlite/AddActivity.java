@@ -6,8 +6,6 @@ import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
 
-import com.example.sqlite.R;
-
 public class AddActivity extends AppCompatActivity {
 
     EditText title, ingredient, measurement;
@@ -23,8 +21,8 @@ public class AddActivity extends AppCompatActivity {
         add_button = findViewById(R.id.add_button);
 
         add_button.setOnClickListener(view -> {
-            MyDatabaseHelper myDb = new MyDatabaseHelper(AddActivity.this);
-            myDb.addIem(title.getText().toString().trim(),
+            Repository repository = new RepositoryImplementation(AddActivity.this);
+            repository.addIem(title.getText().toString().trim(),
                     ingredient.getText().toString().trim(),
                     Integer.parseInt(measurement.getText().toString().trim()));
             title.setText("");

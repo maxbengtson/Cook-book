@@ -9,7 +9,7 @@ import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 
-class MyDatabaseHelper extends SQLiteOpenHelper implements Repository {
+class RepositoryImplementation extends SQLiteOpenHelper implements Repository {
 
     private Context context;
     private static final String DATABASE_NAME = "Recipes.db";
@@ -22,7 +22,7 @@ class MyDatabaseHelper extends SQLiteOpenHelper implements Repository {
     private static final String COLUMN_MEASUREMENT = "item_measurement";
 
 
-    MyDatabaseHelper(@Nullable Context context) {
+    RepositoryImplementation(@Nullable Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
         this.context = context;
     }

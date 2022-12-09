@@ -17,7 +17,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
-import com.example.sqlite.R;
 
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -26,13 +25,12 @@ import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
-    //Declares the views and the MyDatabaseHelper class.
+    //Declares the views and the repository class.
     RecyclerView recyclerView;
     FloatingActionButton add_button;
     ImageView empty_imageView;
     TextView no_data;
-
-    MyDatabaseHelper myDB;
+    
     Repository repository;
     Adapter adapter;
 
@@ -52,9 +50,8 @@ public class MainActivity extends AppCompatActivity {
             Intent intent = new Intent(MainActivity.this, AddActivity.class );
             startActivity(intent);
         });
-
-        myDB = new MyDatabaseHelper(MainActivity.this);
-        repository = new MyDatabaseHelper(getApplicationContext());
+        
+        repository = new RepositoryImplementation(getApplicationContext());
         item_id = new ArrayList<>();
         item_title = new ArrayList<>();
         item_ingredients = new ArrayList<>();
@@ -121,8 +118,8 @@ public class MainActivity extends AppCompatActivity {
         builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                MyDatabaseHelper myDB = new MyDatabaseHelper(MainActivity.this);
-                myDB.deleteAllData();
+                Repository repository = new RepositoryImplementation(MainActivity.this);
+                repository.deleteAllData();
 
                 //Refresh activity.
                 Intent intent = new Intent(MainActivity.this, MainActivity.class);

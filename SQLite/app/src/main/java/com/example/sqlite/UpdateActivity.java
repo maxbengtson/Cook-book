@@ -6,7 +6,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
-import com.example.sqlite.R;
 
 
 import androidx.appcompat.app.ActionBar;
@@ -39,11 +38,11 @@ public class UpdateActivity extends AppCompatActivity {
         }
 
         update_button.setOnClickListener(view -> {
-            MyDatabaseHelper myDB = new MyDatabaseHelper(UpdateActivity.this);
+            Repository repository = new RepositoryImplementation(UpdateActivity.this);
             title= title_update.getText().toString().trim();
             ingredient = ingredient_update.getText().toString().trim();
             measurement = measurement_update.getText().toString().trim();
-            myDB.updateData(id, title, ingredient, measurement);
+            repository.updateData(id, title, ingredient, measurement);
         });
         delete_button.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -77,8 +76,8 @@ public class UpdateActivity extends AppCompatActivity {
         builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                MyDatabaseHelper myDB = new MyDatabaseHelper(UpdateActivity.this);
-                myDB.deleteOneRow(id);
+                Repository repository = new RepositoryImplementation(UpdateActivity.this);
+                repository.deleteOneRow(id);
                 finish();
             }
         });
