@@ -6,6 +6,8 @@ import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
 
+import com.example.sqlite.R;
+
 public class AddActivity extends AppCompatActivity {
 
     EditText title, ingredient, measurement;
