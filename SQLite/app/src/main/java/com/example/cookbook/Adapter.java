@@ -57,7 +57,7 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
         holder.mainLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //Here we are navigating from our MainActivity, where we have the recyclerView, to our UpdateActivity. We're transferring the properties of the book to the new activity.
+                //Here we are navigating from our MainActivity, where we have the recyclerView, to our UpdateActivity. We're transferring the properties of the book to the new activity...
                 Intent intent = new Intent(context, UpdateActivity.class);
                 intent.putExtra("id", String.valueOf(item_id.get(position)));
                 intent.putExtra("title", String.valueOf(item_title.get(position)));
