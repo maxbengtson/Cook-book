@@ -11,4 +11,16 @@
     <string name="app_name">Kokboken</string>
     <string name="update_recipe">Redigera recept</string>
     <string name="no_data">Inga recept</string>
+    <string name="delete_all">Radera alla?</string>
+    <string name="delete_message">Är du säker på att du vill radera alla recept?</string>
+    <string name="yes">Ja</string>
+    <string name="no">Nej</string>
+    <string name="delete_item">"Radera "</string>
+    <string name="delete_item_message">"Är du säker på att du vill radera "</string>
+    <string name="addes_successfully">Tillagd!</string>
+    <string name="failed_to_add">Misslyckades att lägga till.</string>
+    <string name="failed_to_update">Missklyckades att uppdatera.</string>
+    <string name="updated_successfully">Uppdaterad!</string>
+    <string name="failed_to_delete">Misslyckades att radera.</string>
+    <string name="deleted_successfully">Raderad!</string>
 </resources>

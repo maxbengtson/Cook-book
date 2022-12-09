@@ -55,9 +55,9 @@ class RepositoryImplementation extends SQLiteOpenHelper implements Repository {
         
         //If the application fails to insert the data the result will be -1.
         if (result == -1){
-            Toast.makeText(context, "Failed to add.", Toast.LENGTH_SHORT).show();
+            Toast.makeText(context, R.string.failed_to_add, Toast.LENGTH_SHORT).show();
         }else{
-            Toast.makeText(context, "Added successfully!", Toast.LENGTH_SHORT).show();
+            Toast.makeText(context, R.string.addes_successfully, Toast.LENGTH_SHORT).show();
 
         }
     }
@@ -80,18 +80,18 @@ class RepositoryImplementation extends SQLiteOpenHelper implements Repository {
 
         long result = db.update(TABLE_NAME, cv, "_id=?", new String[]{row_id});
         if (result == -1){
-            Toast.makeText(context, "Failed to update.", Toast.LENGTH_SHORT).show();
+            Toast.makeText(context, R.string.failed_to_update, Toast.LENGTH_SHORT).show();
         }else{
-            Toast.makeText(context, "Updated successfully!", Toast.LENGTH_SHORT).show();
+            Toast.makeText(context, R.string.updated_successfully, Toast.LENGTH_SHORT).show();
         }
     }
     public void deleteOneRow(String row_id){
         SQLiteDatabase db = this.getWritableDatabase();
         long result = db.delete(TABLE_NAME, "_id=?", new String[]{row_id});
         if (result == -1){
-            Toast.makeText(context, "Failed to delete.", Toast.LENGTH_SHORT).show();
+            Toast.makeText(context, R.string.failed_to_delete, Toast.LENGTH_SHORT).show();
         }else{
-            Toast.makeText(context, "Deleted successfully!", Toast.LENGTH_SHORT).show();
+            Toast.makeText(context, R.string.deleted_successfully, Toast.LENGTH_SHORT).show();
         }
     }
 
