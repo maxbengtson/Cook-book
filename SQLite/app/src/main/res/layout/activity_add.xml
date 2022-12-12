@@ -6,6 +6,8 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="30dp"
+    android:background="@drawable/dalle_2022_12_09_13_44_05___cannibals_cooking_food"
+    android:alpha="0.7"
     tools:context=".AddActivity">
 
     <EditText
