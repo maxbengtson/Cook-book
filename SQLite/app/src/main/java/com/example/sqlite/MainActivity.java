@@ -34,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
     Repository repository;
     Adapter adapter;
 
-    ArrayList<String> item_id, item_title, item_ingredients, item_measurement;
+    ArrayList<String> item_id, item_recipe, item_ingredients, item_chef;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,14 +53,14 @@ public class MainActivity extends AppCompatActivity {
 
         repository = new RepositoryImplementation(getApplicationContext());
         item_id = new ArrayList<>();
-        item_title = new ArrayList<>();
+        item_recipe = new ArrayList<>();
         item_ingredients = new ArrayList<>();
-        item_measurement = new ArrayList<>();
+        item_chef = new ArrayList<>();
 
         storeDataInArrays();
 
         //Initialiserar adaptern med all data som är sparad.
-        adapter = new Adapter(MainActivity.this, this, item_id, item_title, item_ingredients, item_measurement);
+        adapter = new Adapter(MainActivity.this, this, item_id, item_recipe, item_ingredients, item_chef);
 
         //Sets the adapter.
         recyclerView.setAdapter(adapter);
@@ -87,9 +87,9 @@ public class MainActivity extends AppCompatActivity {
         }else{
             while (cursor.moveToNext()){
                 item_id.add(cursor.getString(0));
-                item_title.add(cursor.getString(1));
+                item_recipe.add(cursor.getString(1));
                 item_ingredients.add(cursor.getString(2));
-                item_measurement.add(cursor.getString(3));
+                item_chef.add(cursor.getString(3));
             }
             empty_imageView.setVisibility(View.GONE);
             no_data.setVisibility(View.GONE);

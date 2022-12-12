@@ -13,19 +13,19 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class UpdateActivity extends AppCompatActivity {
-    EditText title_update, ingredient_update, measurement_update;
+    EditText recipe_update, ingredient_update, chef_update;
     Button update_button, delete_button;
 
-    String id, title, ingredient, measurement;
+    String id, recipe, ingredient, chef;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_update);
 
-        title_update = findViewById(R.id.recipe_update);
+        recipe_update = findViewById(R.id.recipe_update);
         ingredient_update = findViewById(R.id.ingredient_update);
-        measurement_update = findViewById(R.id.measurement_update);
+        chef_update = findViewById(R.id.measurement_update);
         update_button = findViewById(R.id.update_button);
         delete_button = findViewById(R.id.delete_button);
 
@@ -34,15 +34,15 @@ public class UpdateActivity extends AppCompatActivity {
 
         ActionBar ab = getSupportActionBar();
         if (ab != null){
-            ab.setTitle(title);
+            ab.setTitle(recipe);
         }
 
         update_button.setOnClickListener(view -> {
             Repository repository = new RepositoryImplementation(UpdateActivity.this);
-            title= title_update.getText().toString().trim();
+            recipe = recipe_update.getText().toString().trim();
+            chef = chef_update.getText().toString().trim();
             ingredient = ingredient_update.getText().toString().trim();
-            measurement = measurement_update.getText().toString().trim();
-            repository.updateData(id, title, ingredient, measurement);
+            repository.updateData(id, recipe, ingredient, chef);
         });
         delete_button.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -53,17 +53,17 @@ public class UpdateActivity extends AppCompatActivity {
     }
 
     void getAndSetIntentData(){
-        if (getIntent().hasExtra("id") && getIntent().hasExtra("title") && getIntent().hasExtra("chef") && getIntent().hasExtra("ingredients")){
+        if (getIntent().hasExtra("id") && getIntent().hasExtra("recipe") && getIntent().hasExtra("chef") && getIntent().hasExtra("ingredients")){
             //Om det finns information att visa, hämtar vi den från intent
             id = getIntent().getStringExtra("id");
-            title = getIntent().getStringExtra("title");
-            ingredient = getIntent().getStringExtra("chef");
-            measurement = getIntent().getStringExtra("ingredients");
+            recipe = getIntent().getStringExtra("recipe");
+            chef = getIntent().getStringExtra("chef");
+            ingredient = getIntent().getStringExtra("ingredients");
 
             //Visar data som går att uppdatera.
-            title_update.setText(title);
+            recipe_update.setText(recipe);
             ingredient_update.setText(ingredient);
-            measurement_update.setText(measurement);
+            chef_update.setText(chef);
         }else{
             Toast.makeText(UpdateActivity.this, R.string.no_data, Toast.LENGTH_SHORT).show();
         }
@@ -71,8 +71,8 @@ public class UpdateActivity extends AppCompatActivity {
     //Ta bort ett recept med en säkerhetsvarning
     void confirmDialog(){
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle(getString(R.string.delete_item) + title + "?");
-        builder.setMessage(getString(R.string.delete_item_message) + title + "?");
+        builder.setTitle(getString(R.string.delete_item) + recipe + "?");
+        builder.setMessage(getString(R.string.delete_item_message) + recipe + "?");
         builder.setPositiveButton(R.string.yes, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {

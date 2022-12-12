@@ -3,7 +3,7 @@
     <string name="add">Lägg till</string>
     <string name="title">Recept</string>
     <string name="ingredient">Ingrediens</string>
-    <string name="measurement">Mått</string>
+    <string name="chef">Kock</string>
     <string name="add_item">Nytt recept</string>
     <string name="cookbook">Kokbok</string>
     <string name="delete">Radera</string>

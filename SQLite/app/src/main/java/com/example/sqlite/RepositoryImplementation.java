@@ -17,9 +17,9 @@ class RepositoryImplementation extends SQLiteOpenHelper implements Repository {
 
     private static final String TABLE_NAME = "my_recipes";
     private static final String COLUMN_ID = "_id";
-    private static final String COLUMN_TITLE = "item_title";
+    private static final String COLUMN_RECIPE = "item_title";
     private static final String COLUMN_INGREDIENTS = "item_ingredients";
-    private static final String COLUMN_MEASUREMENT = "item_measurement";
+    private static final String COLUMN_CHEF = "item_measurement";
 
 
     RepositoryImplementation(@Nullable Context context) {
@@ -32,9 +32,9 @@ class RepositoryImplementation extends SQLiteOpenHelper implements Repository {
 
         String query = "CREATE TABLE " + TABLE_NAME +
                         " (" + COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
-                        COLUMN_TITLE + " TEXT, " +
+                COLUMN_RECIPE + " TEXT, " +
                         COLUMN_INGREDIENTS + " TEXT, " +
-                        COLUMN_MEASUREMENT + " INTEGER);";
+                        COLUMN_CHEF + " TEXT);";
         db.execSQL(query);
 
     }
@@ -44,13 +44,13 @@ class RepositoryImplementation extends SQLiteOpenHelper implements Repository {
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME);
         onCreate(db);
     }
-    public void addIem(String title, String ingredients, int measurement){
+    public void addIem(String title, String ingredients, String measurement){
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues cv = new ContentValues();
 
-        cv.put(COLUMN_TITLE, title);
+        cv.put(COLUMN_RECIPE, title);
         cv.put(COLUMN_INGREDIENTS, ingredients);
-        cv.put(COLUMN_MEASUREMENT, measurement);
+        cv.put(COLUMN_CHEF, measurement);
         long result = db.insert(TABLE_NAME, null, cv);
         
         //Om applikationen inte kan föra in uppgifterna är resultatet -1
@@ -74,9 +74,9 @@ class RepositoryImplementation extends SQLiteOpenHelper implements Repository {
     public void updateData(String row_id, String title, String ingredients, String measurement){
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues cv = new ContentValues();
-        cv.put(COLUMN_TITLE, title);
+        cv.put(COLUMN_RECIPE, title);
         cv.put(COLUMN_INGREDIENTS, ingredients);
-        cv.put(COLUMN_MEASUREMENT, measurement);
+        cv.put(COLUMN_CHEF, measurement);
 
         long result = db.update(TABLE_NAME, cv, "_id=?", new String[]{row_id});
         if (result == -1){

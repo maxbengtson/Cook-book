@@ -8,5 +8,5 @@ public interface Repository{
     void updateData (String row_id, String title, String ingredients, String measurement);
     void deleteOneRow(String row_id);
     void deleteAllData();
-    void addIem(String title, String ingredients, int measurement);
+    void addIem(String title, String ingredients, String measurement);
 }

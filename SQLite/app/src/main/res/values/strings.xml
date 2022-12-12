@@ -3,7 +3,7 @@
     <string name="add">Add</string>
     <string name="title">Recipe</string>
     <string name="ingredient">Ingredient</string>
-    <string name="measurement">Measurement</string>
+    <string name="chef">Chef</string>
     <string name="add_item">New Recipe</string>
     <string name="cookbook">Cookbook</string>
     <string name="delete">Delete</string>
