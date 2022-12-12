@@ -44,13 +44,13 @@ class RepositoryImplementation extends SQLiteOpenHelper implements Repository {
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME);
         onCreate(db);
     }
-    public void addIem(String title, String ingredients, String measurement){
+    public void addIem(String recipe, String ingredients, String chef){
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues cv = new ContentValues();
 
-        cv.put(COLUMN_RECIPE, title);
+        cv.put(COLUMN_RECIPE, recipe);
         cv.put(COLUMN_INGREDIENTS, ingredients);
-        cv.put(COLUMN_CHEF, measurement);
+        cv.put(COLUMN_CHEF, chef);
         long result = db.insert(TABLE_NAME, null, cv);
         
         //Om applikationen inte kan föra in uppgifterna är resultatet -1
@@ -71,12 +71,12 @@ class RepositoryImplementation extends SQLiteOpenHelper implements Repository {
          }
          return cursor;
     }
-    public void updateData(String row_id, String title, String ingredients, String measurement){
+    public void updateData(String row_id, String recipe, String ingredients, String chef){
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues cv = new ContentValues();
-        cv.put(COLUMN_RECIPE, title);
+        cv.put(COLUMN_RECIPE, recipe);
         cv.put(COLUMN_INGREDIENTS, ingredients);
-        cv.put(COLUMN_CHEF, measurement);
+        cv.put(COLUMN_CHEF, chef);
 
         long result = db.update(TABLE_NAME, cv, "_id=?", new String[]{row_id});
         if (result == -1){
