@@ -1,34 +1,48 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/linearLayout2"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="30dp"
+    android:background=""
     tools:context=".UpdateActivity">
 
     <EditText
         android:id="@+id/recipe_update"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="150dp"
+        android:layout_width="200dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="10dp"
         android:ems="10"
+        android:hint="@string/title"
         android:inputType="textPersonName"
-        android:hint="@string/title" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout_conversion_absoluteHeight="45dp"
+        tools:layout_conversion_absoluteWidth="351dp" />
 
     <EditText
         android:id="@+id/measurement_update"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
         android:ems="10"
         android:hint="@string/chef"
-        android:inputType="textPersonName" />
+        android:inputType="textPersonName"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/recipe_update"
+        tools:layout_conversion_absoluteHeight="45dp"
+        tools:layout_conversion_absoluteWidth="351dp" />
 
     <EditText
         android:id="@+id/ingredient_update"
-        android:layout_width="match_parent"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="68dp"
         android:ems="10"
         android:hint="@string/ingredient"
         android:inputType="textMultiLine"
@@ -37,30 +51,38 @@
         android:overScrollMode="always"
         android:scrollbarStyle="insideInset"
         android:scrollbars="vertical"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/title_input" />
+        app:layout_constraintTop_toBottomOf="@+id/measurement_update"
+        tools:layout_conversion_absoluteHeight="45dp"
+        tools:layout_conversion_absoluteWidth="351dp" />
 
     <Button
         android:id="@+id/update_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="right"
-        android:textAllCaps="false"
-        android:textSize="20sp"
+        android:backgroundTint="#4CAF50"
         android:text="@string/update"
+        android:textAllCaps="false"
         android:textColor="@color/black"
-        android:backgroundTint="#4CAF50"/>
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/delete_button"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:layout_conversion_absoluteHeight="48dp"
+        tools:layout_conversion_absoluteWidth="108dp" />
 
     <Button
         android:id="@+id/delete_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="right"
+        android:layout_marginEnd="4dp"
+        android:layout_marginBottom="4dp"
         android:backgroundTint="@android:color/holo_red_light"
         android:text="@string/delete"
         android:textAllCaps="false"
-        android:textSize="20sp"
         android:textColor="@color/black"
-        />
-</LinearLayout>
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:layout_conversion_absoluteHeight="48dp"
+        tools:layout_conversion_absoluteWidth="101dp" />
+</androidx.constraintlayout.widget.ConstraintLayout>
