@@ -128,7 +128,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
         // Möjlighet att ångra sig
-        builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+        builder.setNegativeButton(R.string.no, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
 
