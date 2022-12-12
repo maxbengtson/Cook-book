@@ -20,9 +20,12 @@ import java.util.ArrayList;
 
 public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
 
-    private Context context;
+    private final Context context;
     Activity activity;
-    private ArrayList item_id, item_recipe, item_ingredients, item_chef;
+    private final ArrayList item_id;
+    private final ArrayList item_recipe;
+    private final ArrayList item_ingredients;
+    private final ArrayList item_chef;
 
     Animation translate_anim;
 
@@ -50,21 +53,16 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
         //Håller informationen vi vill använda/visa i vår recycler
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, @SuppressLint("RecyclerView") int position) {
-        //holder.item_id.setText(String.valueOf(item_id.get(position)));
         holder.item_recipe.setText(String.valueOf(item_recipe.get(position)));
-        // holder.item_ingredients.setText(String.valueOf(item_ingredients.get(position)));
         holder.item_chef.setText(String.valueOf(item_chef.get(position)));
-        holder.mainLayout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //På klick, går från Mainactivity till UpdateActivity. sen för över de nya propertiesen.
-                Intent intent = new Intent(context, UpdateActivity.class);
-                intent.putExtra("id", String.valueOf(item_id.get(position)));
-                intent.putExtra("recipe", String.valueOf(item_recipe.get(position)));
-                intent.putExtra("ingredients", String.valueOf(item_ingredients.get(position)));
-                intent.putExtra("chef", String.valueOf(item_chef.get(position)));
-                activity.startActivityForResult(intent, 1);
-            }
+        holder.mainLayout.setOnClickListener(v -> {
+            //På klick, går från Mainactivity till UpdateActivity. sen för över de nya propertiesen.
+            Intent intent = new Intent(context, UpdateActivity.class);
+            intent.putExtra("id", String.valueOf(item_id.get(position)));
+            intent.putExtra("recipe", String.valueOf(item_recipe.get(position)));
+            intent.putExtra("ingredients", String.valueOf(item_ingredients.get(position)));
+            intent.putExtra("chef", String.valueOf(item_chef.get(position)));
+            activity.startActivityForResult(intent, 1);
         });
     }
 
@@ -75,14 +73,13 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
 
     public class ViewHolder extends RecyclerView.ViewHolder {
 
-        TextView item_id, item_recipe, item_ingredients, item_chef;
+        TextView item_recipe, item_chef;
         LinearLayout mainLayout;
         // Det är här vi väljer vad vi vill visa i vår recycler view
         public ViewHolder(@NonNull View view) {
             super(view);
 
             item_recipe = view.findViewById(R.id.item_title);
-            // item_ingredients = view.findViewById(R.id.item_ingredients);
             item_chef = view.findViewById(R.id.item_measurement);
             mainLayout = view.findViewById(R.id.mainLayout);
             //Animate RecyclerView.

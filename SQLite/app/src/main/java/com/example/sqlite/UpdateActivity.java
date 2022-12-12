@@ -1,8 +1,7 @@
 package com.example.sqlite;
 
-import android.content.DialogInterface;
+
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -44,12 +43,7 @@ public class UpdateActivity extends AppCompatActivity {
             ingredient = ingredient_update.getText().toString().trim();
             repository.updateData(id, recipe, ingredient, chef);
         });
-        delete_button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                confirmDialog();
-            }
-        });
+        delete_button.setOnClickListener(v -> confirmDialog());
     }
 
     void getAndSetIntentData(){
@@ -73,19 +67,13 @@ public class UpdateActivity extends AppCompatActivity {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle(getString(R.string.delete_item) + recipe + "?");
         builder.setMessage(getString(R.string.delete_item_message) + recipe + "?");
-        builder.setPositiveButton(R.string.yes, new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                Repository repository = new RepositoryImplementation(UpdateActivity.this);
-                repository.deleteOneRow(id);
-                finish();
-            }
+        builder.setPositiveButton(R.string.yes, (dialog, which) -> {
+            Repository repository = new RepositoryImplementation(UpdateActivity.this);
+            repository.deleteOneRow(id);
+            finish();
         });
-        builder.setNegativeButton(R.string.no, new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
+        builder.setNegativeButton(R.string.no, (dialog, which) -> {
 
-            }
         });
         builder.create().show();
     }

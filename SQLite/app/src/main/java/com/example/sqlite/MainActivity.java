@@ -7,7 +7,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
@@ -115,24 +114,18 @@ public class MainActivity extends AppCompatActivity {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle(R.string.delete_all);
         builder.setMessage(R.string.delete_message);
-        builder.setPositiveButton(R.string.yes, new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                Repository repository = new RepositoryImplementation(MainActivity.this);
-                repository.deleteAllData();
+        builder.setPositiveButton(R.string.yes, (dialog, which) -> {
+            Repository repository = new RepositoryImplementation(MainActivity.this);
+            repository.deleteAllData();
 
-                //Refreshar activityn
-                Intent intent = new Intent(MainActivity.this, MainActivity.class);
-                startActivity(intent);
-                finish();
-            }
+            //Refreshar activityn
+            Intent intent = new Intent(MainActivity.this, MainActivity.class);
+            startActivity(intent);
+            finish();
         });
         // Möjlighet att ångra sig
-        builder.setNegativeButton(R.string.no, new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
+        builder.setNegativeButton(R.string.no, (dialog, which) -> {
 
-            }
         });
         builder.create().show();
     }

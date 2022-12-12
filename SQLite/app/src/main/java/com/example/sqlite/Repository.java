@@ -1,6 +1,6 @@
 package com.example.sqlite;
 
-import android.content.Context;
+
 import android.database.Cursor;
 
 public interface Repository{
