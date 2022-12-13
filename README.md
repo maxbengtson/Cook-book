@@ -1,5 +1,5 @@
 # Cook-book
-The Cannibal Cookbook application is 
+The Cannibal Cookbook application!
 
 The android application keeps track of your most delicious human meals for you to enjoy and share with your cannibal friends.
 
