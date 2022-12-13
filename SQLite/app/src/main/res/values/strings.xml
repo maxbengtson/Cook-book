@@ -1,9 +1,9 @@
 <resources>
     <string name="app_name">Cookbook</string>
     <string name="add">Add</string>
-    <string name="title">Recipe</string>
-    <string name="ingredient">Ingredient</string>
-    <string name="chef">Chef</string>
+    <string name="title"><i>Recipe</i></string>
+    <string name="ingredient"><i>Ingredient</i></string>
+    <string name="chef"><i>Chef</i></string>
     <string name="add_item">New Recipe</string>
     <string name="cookbook">Cookbook</string>
     <string name="delete">Delete</string>

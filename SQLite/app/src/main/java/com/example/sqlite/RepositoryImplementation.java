@@ -32,7 +32,7 @@ class RepositoryImplementation extends SQLiteOpenHelper implements Repository {
 
         String query = "CREATE TABLE " + TABLE_NAME +
                         " (" + COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
-                COLUMN_RECIPE + " TEXT, " +
+                        COLUMN_RECIPE + " TEXT, " +
                         COLUMN_INGREDIENTS + " TEXT, " +
                         COLUMN_CHEF + " TEXT);";
         db.execSQL(query);
